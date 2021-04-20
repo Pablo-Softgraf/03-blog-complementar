@@ -1,0 +1,104 @@
+.container{
+    width: 1440px;
+    height: 1068px;
+    img{
+    position: absolute;
+    width: 238.62px;
+    height: 25.63px;
+    left: 372px;
+    top: 79.55px;
+    }
+    div{
+      button{
+          width: 176px;
+          height: 22px;
+          margin: 3rem 0 auto;
+    
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 22px;
+          /* identical to box height */
+          text-align: justify;
+          
+          /* Highlight */
+          
+          color: #FF57B2;
+          border: none;
+      }
+    }
+}
+
+.posts {
+    position: relative;
+    width: 700px;
+    height: 108px;
+    left: 370px;
+    top: 170px;
+
+    div{
+      &+div{
+        margin:1rem 0 auto;
+      }
+    }
+    
+    a {
+
+      strong{
+        font-family: Inter;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 28px;
+        line-height: 34px;
+        /* identical to box height */
+        
+        text-align: justify;
+        letter-spacing: -0.5px;
+                
+        /* Heading */
+        color: #F8F8F8;
+      }
+
+      p{
+        /* Subtitle */
+        left: 0%;
+        right: 28.57%;
+        font-family: Inter;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 21.78px;
+        /* identical to box height */
+        text-align: justify;
+
+        /* Body */
+        color: #D7D7D7;
+      }
+      div{
+        margin-top: 1rem;
+        color: #D7D7D7;
+
+        span{
+          margin: 0 0.65rem auto;
+          left: 4%;
+          right: 84.43%;
+          top: 82.41%;
+          bottom: 1.85%;
+
+          font-family: Inter;
+          font-style: normal;
+          font-weight: normal;
+          font-size: 14px;
+          line-height: 16.94px;
+          /* identical to box height */
+          color: #BBBBBB;
+        }
+
+      }
+    }
+}
+
+
+
+
