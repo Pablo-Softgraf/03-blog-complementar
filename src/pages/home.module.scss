@@ -23,11 +23,38 @@
           text-align: justify;
           
           /* Highlight */
-          
+          background-color: var(--black-700);          
           color: #FF57B2;
           border: none;
       }
     }
+    
+    .aside_content{
+      margin-top: 2rem;
+        a{
+          div{
+            margin-top: 3rem;
+            width: 700px;
+            height: 58px;
+            background: #F8F8F8;
+            border-radius: 4px;
+      
+          p{  
+          font-family: Inter;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 18px;
+          line-height: 22px;
+          /* identical to box height */
+          /* Background */
+          text-align: center;
+          color: #1A1D23;
+          }
+        }
+      } 
+    }
+
+
 }
 
 .posts {

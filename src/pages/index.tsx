@@ -32,9 +32,11 @@ interface PostPagination {
 
 interface HomeProps {
   postsPagination: PostPagination;
+  preview: boolean;
 }
 
-export default function Home({ postsPagination }: HomeProps) {
+export default function Home({ postsPagination, preview }: HomeProps) {
+
   const { next_page, results } = postsPagination;
   const [posts, setPosts] = useState(results)
   const [hasMorePosts, setHasMorePosts] = useState(!!postsPagination.next_page);
@@ -82,6 +84,19 @@ export default function Home({ postsPagination }: HomeProps) {
               </button>
             )
           }
+
+          {preview && (
+            <aside className={styles.aside_content}>
+              <Link href="/api/exit-preview">
+                <a>
+                  <div>
+                    <p>Sair do modo Preview</p>
+                  </div>
+                </a>
+
+              </Link>
+            </aside>
+          )}
         </div>
       </main>
     </>
@@ -100,15 +115,19 @@ export default function Home({ postsPagination }: HomeProps) {
   }
 }
 
-export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+export const getStaticProps: GetStaticProps<HomeProps> = async (
+  {
+    preview = false,
+    previewData,
+  }) => {
   const prismic = getPrismicClient();
   const postsResponse = await prismic.query([
     Prismic.predicates.at('document.type', 'post')
   ], {
     fetch: ['post.title', 'post.subtitle', 'post.author'],
-    pageSize: 1,
+    pageSize: 2,
+    orderings: '[my.post.data_post]',
   })
-
   const posts = postsResponse.results.map(post => {
     return {
       uid: post.uid,
@@ -117,7 +136,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
         title: post.data.title,
         subtitle: post.data.subtitle,
         author: post.data.author,
-      }
+      },
+      ref: previewData?.ref ?? null,
     }
   })
   return {
@@ -125,7 +145,8 @@ export const getStaticProps: GetStaticProps<HomeProps> = async () => {
       postsPagination: {
         next_page: postsResponse.next_page,
         results: posts,
-      }
+      },
+      preview,
     }
   }
 };
